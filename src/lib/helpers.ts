@@ -26,12 +26,13 @@ export const getCouples = (peopleCount: number) => {
   let matrix: number[][][] = [];
 
   // fill the matrix with empty arrays
-  for (let i = 0; i < peopleCount; i++) {
+  // this is a mess
+  for (let i = 0; i < 100; i++) {
     matrix.push([]);
   }
 
   couples.forEach((couple) => {
-    for (let i = 0; i < peopleCount; i++) {
+    for (let i = 0; ; i++) {
       let present = false;
 
       matrix[i].forEach(([a, b]) => {
@@ -52,13 +53,8 @@ export const getCouples = (peopleCount: number) => {
     }
   });
 
-  // idk why but when working with powers of 2, the last array is always empty
-  // so I'm just gonna remove it
-  if (matrix.length > 0) {
-    if (matrix[matrix.length - 1].length === 0) {
-      matrix.pop();
-    }
-  }
+  // remove empty arrays
+  matrix = matrix.filter((array) => array.length > 0);
 
   return matrix;
 };
