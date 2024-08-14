@@ -54,8 +54,10 @@ export const getCouples = (peopleCount: number) => {
 
   // idk why but when working with powers of 2, the last array is always empty
   // so I'm just gonna remove it
-  if (matrix[matrix.length - 1].length === 0) {
-    matrix.pop();
+  if (matrix.length > 0) {
+    if (matrix[matrix.length - 1].length === 0) {
+      matrix.pop();
+    }
   }
 
   return matrix;
