@@ -5,7 +5,7 @@
 // hoping it doesn't crash the browser with small numbers
 
 export const getCouples = (peopleCount: number) => {
-  let couples: number[][] = [];
+  const couples: number[][] = [];
 
   for (let i = 1; i < peopleCount + 1; i++) {
     for (let j = 1; j < peopleCount + 1; j++) {
@@ -31,11 +31,11 @@ export const getCouples = (peopleCount: number) => {
     matrix.push([]);
   }
 
-  couples.forEach((couple) => {
-    for (let i = 0; ; i++) {
-      let present = false;
-
-      matrix[i].forEach(([a, b]) => {
+  for (const couple of couples) {
+    let present = false;
+  
+    for (const row of matrix) {
+      for (const [a, b] of row) {
         if (
           a === couple[0] ||
           a === couple[1] ||
@@ -43,15 +43,16 @@ export const getCouples = (peopleCount: number) => {
           b === couple[1]
         ) {
           present = true;
+          break;
         }
-      });
-
+      }
+  
       if (!present) {
-        matrix[i].push(couple);
+        row.push(couple);
         break;
       }
     }
-  });
+  }
 
   // remove empty arrays
   matrix = matrix.filter((array) => array.length > 0);
