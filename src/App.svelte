@@ -20,6 +20,7 @@
 
 <p>Quanti siamo?</p>
 <input type="number" bind:value={people} min="2" max="20" />
+<p>Con i numeri dispari fa cagare</p>
 
 <hr>
 

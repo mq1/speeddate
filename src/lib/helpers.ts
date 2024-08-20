@@ -46,6 +46,10 @@ const genMatrix = (couples: number[][]) => {
 };
 
 export const getCouples = (peopleCount: number) => {
+  if (peopleCount == null) {
+    return [];
+  }
+
 	const couples: number[][] = [];
 
 	for (let i = 1; i < peopleCount + 1; i++) {
