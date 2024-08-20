@@ -19,7 +19,7 @@
 <hr>
 
 <p>Quanti siamo?</p>
-<input type="number" bind:value={people} min="2" max="100" />
+<input type="number" bind:value={people} min="2" max="20" />
 
 <hr>
 

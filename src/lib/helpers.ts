@@ -4,25 +4,7 @@
 // dumpster fire of unoptimized code
 // hoping it doesn't crash the browser with small numbers
 
-export const getCouples = (peopleCount: number) => {
-	const couples: number[][] = [];
-
-	for (let i = 1; i < peopleCount + 1; i++) {
-		for (let j = 1; j < peopleCount + 1; j++) {
-			// no singles please
-			if (i === j) {
-				continue;
-			}
-
-			// no duplicates please
-			if (couples.find((couple) => couple[0] === j && couple[1] === i)) {
-				continue;
-			}
-
-			couples.push([i, j]);
-		}
-	}
-
+const genMatrix = (couples: number[][]) => {
 	let matrix: number[][][] = [];
 
 	// fill the matrix with empty arrays
@@ -30,6 +12,9 @@ export const getCouples = (peopleCount: number) => {
 	for (let i = 0; i < 100; i++) {
 		matrix.push([]);
 	}
+
+	// shuffle couples
+	couples.sort(() => Math.random() - 0.5);
 
 	for (const couple of couples) {
 		for (let i = 0; ; i++) {
@@ -56,6 +41,40 @@ export const getCouples = (peopleCount: number) => {
 
 	// remove empty arrays
 	matrix = matrix.filter((array) => array.length > 0);
+
+	return matrix;
+};
+
+export const getCouples = (peopleCount: number) => {
+	const couples: number[][] = [];
+
+	for (let i = 1; i < peopleCount + 1; i++) {
+		for (let j = 1; j < peopleCount + 1; j++) {
+			// no singles please
+			if (i === j) {
+				continue;
+			}
+
+			// no duplicates please
+			if (couples.find((couple) => couple[0] === j && couple[1] === i)) {
+				continue;
+			}
+
+			couples.push([i, j]);
+		}
+	}
+
+	// generate a matrix until length == n-1
+	let matrix = genMatrix(couples);
+
+	// return if n is odd
+	if (peopleCount % 2 !== 0) {
+		return matrix;
+	}
+
+	while (matrix.length !== peopleCount - 1) {
+		matrix = genMatrix(couples);
+	}
 
 	return matrix;
 };
