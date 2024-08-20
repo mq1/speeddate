@@ -18,14 +18,21 @@
 
 <hr>
 
-<p>Quanti siamo?</p>
+<p>🔢 Quanti siamo?</p>
 <input type="number" bind:value={people} min="2" max="20" />
-<p>Con i numeri dispari fa cagare</p>
+<p>
+  ⚠️ Con i numeri dispari fa cagare
+  <br>
+  ⚠️ Con i numeri alti si inchioda ma prima o poi va
+</p>
 
 <hr>
 
-<p>Tempo totale con 5 minuti a coppia: {totalTimeWith5min} minuti</p>
-<p>Tempo totale con 10 minuti a coppia: {totalTimeWith10min} minuti</p>
+<p>
+  ⏱️ Tempo totale con 5 minuti a coppia: {totalTimeWith5min} minuti
+  <br>
+  ⏱️ Tempo totale con 10 minuti a coppia: {totalTimeWith10min} minuti
+</p>
 
 <hr>
 
