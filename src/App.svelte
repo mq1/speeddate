@@ -4,44 +4,48 @@
 -->
 
 <script lang="ts">
-  import { getMatrix } from "./lib/helpers";
+import robin from "roundrobin";
 
-  let people = 10;
+let people = 10;
 
-  $: matrix = getMatrix(people);
+$: matrix = robin(people);
 
-  $: totalTimeWith5min = matrix.length * 5;
-  $: totalTimeWith10min = matrix.length * 10;
+$: totalTimeWith5min = matrix.length * 5;
+$: totalTimeWith10min = matrix.length * 10;
 </script>
 
 <h1>⏱️❤️‍🔥🏳️‍🌈 Speeddate al prom</h1>
 
-<hr>
+<hr />
 
 <p>🔢 Quanti siamo?</p>
-<input type="number" bind:value={people} min="2" max="20" />
+<input type="number" bind:value={people} min="2" max="100" />
 <p>
   ⚠️ Con i numeri dispari fa cagare
-  <br>
+  <br />
   ⚠️ Con i numeri alti si inchioda ma prima o poi va
 </p>
 
-<hr>
+<hr />
 
 <p>
   ⏱️ Tempo totale con 5 minuti a coppia: {totalTimeWith5min} minuti
-  <br>
+  <br />
   ⏱️ Tempo totale con 10 minuti a coppia: {totalTimeWith10min} minuti
 </p>
 
-<hr>
+<hr />
 
-<ul>
-  {#each matrix as round}
-    <li>
-      {#each round as couple}
-        <kbd>{couple}</kbd> &nbsp;
+<div class="overflow-auto">
+  <table class="striped">
+    <tbody>
+      {#each matrix as round}
+        <tr>
+          {#each round as couple}
+            <td><kbd>{couple}</kbd></td>
+          {/each}
+        </tr>
       {/each}
-    </li>
-  {/each}
-</ul>
+    </tbody>
+  </table>
+</div>
