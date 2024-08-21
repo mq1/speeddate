@@ -4,7 +4,17 @@
 // dumpster fire of unoptimized code
 // hoping it doesn't crash the browser with small numbers
 
-const genMatrix = (couples: number[][]) => {
+const genCouples = (peopleCount: number) => {
+	const people = Array.from({ length: peopleCount }, (_, i) => i + 1);
+
+	const couples = people.flatMap((person, i) =>
+		people.slice(i + 1).map((partner) => [person, partner]),
+	);
+
+	return couples;
+};
+
+const genRandomMatrix = (couples: number[][]) => {
 	let matrix: number[][][] = [];
 
 	// fill the matrix with empty arrays
@@ -45,31 +55,16 @@ const genMatrix = (couples: number[][]) => {
 	return matrix;
 };
 
-export const getCouples = (peopleCount: number) => {
-  if (peopleCount == null) {
-    return [];
-  }
-
-	const couples: number[][] = [];
-
-	for (let i = 1; i < peopleCount + 1; i++) {
-		for (let j = 1; j < peopleCount + 1; j++) {
-			// no singles please
-			if (i === j) {
-				continue;
-			}
-
-			// no duplicates please
-			if (couples.find((couple) => couple[0] === j && couple[1] === i)) {
-				continue;
-			}
-
-			couples.push([i, j]);
-		}
+export const getMatrix = (peopleCount: number) => {
+	if (peopleCount === null) {
+		return [];
 	}
 
+	// generate couples
+	const couples = genCouples(peopleCount);
+
 	// generate a matrix until length == n-1
-	let matrix = genMatrix(couples);
+	let matrix = genRandomMatrix(couples);
 
 	// return if n is odd
 	if (peopleCount % 2 !== 0) {
@@ -77,7 +72,7 @@ export const getCouples = (peopleCount: number) => {
 	}
 
 	while (matrix.length !== peopleCount - 1) {
-		matrix = genMatrix(couples);
+		matrix = genRandomMatrix(couples);
 	}
 
 	return matrix;

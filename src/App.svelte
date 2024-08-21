@@ -4,11 +4,11 @@
 -->
 
 <script lang="ts">
-  import { getCouples } from "./lib/helpers";
+  import { getMatrix } from "./lib/helpers";
 
   let people = 10;
 
-  $: matrix = getCouples(people);
+  $: matrix = getMatrix(people);
 
   $: totalTimeWith5min = matrix.length * 5;
   $: totalTimeWith10min = matrix.length * 10;
