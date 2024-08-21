@@ -4,6 +4,7 @@
 // dumpster fire of unoptimized code
 // hoping it doesn't crash the browser with small numbers
 
+// thanks https://stackoverflow.com/a/43241287
 const genCouples = (peopleCount: number) => {
 	const people = Array.from({ length: peopleCount }, (_, i) => i + 1);
 
@@ -63,14 +64,20 @@ export const getMatrix = (peopleCount: number) => {
 	// generate couples
 	const couples = genCouples(peopleCount);
 
-	// generate a matrix until length == n-1
-	let matrix = genRandomMatrix(couples);
-
-	// return if n is odd
+	// if n is odd
 	if (peopleCount % 2 !== 0) {
-		return matrix;
+		// generate 10000 matrices and return the shortest one
+    const matrices = [];
+
+    for (let i = 0; i < 10000; i++) {
+      matrices.push(genRandomMatrix(couples));
+    }
+
+    return matrices.reduce((a, b) => (a.length < b.length ? a : b));
 	}
 
+  // generate a matrix until length == n-1
+	let matrix: number[][][] = [];
 	while (matrix.length !== peopleCount - 1) {
 		matrix = genRandomMatrix(couples);
 	}
