@@ -20,11 +20,6 @@ $: totalTimeWith10min = matrix.length * 10;
 
 <p>🔢 Quanti siamo?</p>
 <input type="number" bind:value={people} min="2" max="100" />
-<p>
-  ⚠️ Con i numeri dispari fa cagare
-  <br />
-  ⚠️ Con i numeri alti si inchioda ma prima o poi va
-</p>
 
 <hr />
 
