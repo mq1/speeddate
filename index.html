@@ -3,42 +3,43 @@
   SPDX-License-Identifier: GPL-3.0-only
 -->
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
     <title>speeddate</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <main class="container">
-        <h1>⏱️❤️‍🔥🏳️‍🌈 Speeddate al prom</h1>
+      <h1>⏱️❤️‍🔥🏳️‍🌈 Speeddate al prom</h1>
 
-        <hr />
+      <hr />
 
-        <p>🔢 Quanti siamo?</p>
-        <input type="number" id="people" min="2" max="100" value="10" />
+      <p>🔢 Quanti siamo?</p>
+      <input type="number" id="people" min="2" max="100" value="10" />
 
-        <hr />
+      <hr />
 
-        <p>
-            ⏱️ Tempo totale con 5 minuti a coppia: <span id="5min"></span> minuti
-            <br />
-            ⏱️ Tempo totale con 10 minuti a coppia: <span id="10min"></span> minuti
-        </p>
+      <p>
+        ⏱️ Tempo totale con 5 minuti a coppia: <span id="5min"></span> minuti
+        <br />
+        ⏱️ Tempo totale con 10 minuti a coppia: <span id="10min"></span> minuti
+      </p>
 
-        <hr />
+      <hr />
 
-        <table class="striped">
-            <tbody id="table"></tbody>
-        </table>
+      <table class="striped">
+        <tbody id="table"></tbody>
+      </table>
     </main>
 
     <script defer src="speeddate.js"></script>
-</body>
-
+  </body>
 </html>
